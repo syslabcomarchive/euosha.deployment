@@ -26,7 +26,7 @@ class Varnish(Component):
         self.hooks['varnish:http'].address = self.address
 
         self.hooks['varnish:supervisor'].program = self.expand(
-            '20 varnish ${component.compdir}/sbin/varnishd [-F -f etc/varnish/webwork.vcl '
+            '20 varnish ${component.compdir}/sbin/varnishd [-F -f etc/varnish/euosha.vcl '
             '-a ${component.address.listen} -p thread_pool_min=10 '
             '-p thread_pool_max=50 -s malloc,250M] ${component.compdir} true')
 
@@ -48,4 +48,4 @@ class Varnish(Component):
 
     @step(2)
     def varnish_config(self):
-        self.template('webwork.vcl.in', 'etc/varnish/webwork.vcl')
+        self.template('euosha.vcl.in', 'etc/varnish/euosha.vcl')
