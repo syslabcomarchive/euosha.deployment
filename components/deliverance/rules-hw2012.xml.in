@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <server-settings>
+    <server>0.0.0.0:5000</server>
+    <execute-pyref>false</execute-pyref>
+    <!-- <dev-allow>93.233.117.168/32</dev-allow> -->
+    <dev-allow>127.0.0.1
+      10.0.2.1/32</dev-allow>
+    <dev-user username="admin" password="admin" />
+    <display-local-files>false</display-local-files>
+    <edit-local-files>false</edit-local-files>
+  </server-settings>
+
+  <proxy path="/_themes">
+    <dest href="{here}/themes" />
+  </proxy>
+
+  <proxy path="regex:/get-involved($|/$|\?|/(?=\?))" class="general participation">
+    <response rewrite-links="1" />
+    <dest href="http://osha.europa.eu/en/campaigns/hw2012/" />
+  </proxy>
+
+  <!-- match /page /page/ /page?query /page/?query but not /page/detail -->
+  <proxy path="regex:/[^/?]+($|/$|\?|/(?=\?))" class="general landingpage">
+    <response rewrite-links="1" />
+    <dest href="http://osha.europa.eu/en/campaigns/hw2012/" />
+  </proxy>
+
+  <!-- everything in the second level goes to the detailpage (so far) -->
+  <proxy path="regex:/[^/]+/[^/]+" class="general detail">
+    <response rewrite-links="1" />
+    <dest href="http://osha.europa.eu/en/campaigns/hw2012/" />
+  </proxy>
+
+  <proxy path="regex:/$" class="general main">
+    <response rewrite-links="1" />
+    <dest href="http://osha.europa.eu/en/campaigns/hw2012/" />
+  </proxy>
+
+  <!-- RULES -->
+  <rule class="general" suppress-standard="1">
+    <!-- rules for every page -->
+    <replace content="/html/head/title" theme="/html/head/title" />
+    <append content="/html/head/meta" theme="/html/head" />
+    <replace content="children:#hw2012Navigation"
+             theme="children:#globalNavigation" />
+    <replace content="children:#languages"
+             theme="children:#languages" />
+  </rule>
+
+  <rule class="landingpage" suppress-standard="1">
+    <theme href="/_themes/hw2012/leadership.html" />
+    <replace content="#introduction #title"
+             theme="#introduction #title" />
+    <replace content="#introduction #body"
+             theme="#introduction p" />
+    <replace content="#introduction .navigation"
+             theme="#introduction .navigation" />
+    <replace content="#introduction img"
+             theme="#introduction img" />
+  </rule>
+
+  <rule class="detail" suppress-standard="1">
+    <theme href="/_themes/hw2012/benefits.html" />
+    <replace content="#column-a"
+             theme="#column-a" />
+    <replace content="#column-b"
+             theme="#column-b" />
+  </rule>
+
+  <rule class="fullpage" suppress-standard="1">
+    <theme href="/_themes/hw2012/enterprise-survey.html" />
+    <replace content="children:#content"
+      theme="children:#mainContent" />
+  </rule>
+
+  <rule class="participation" suppress-standard="1">
+    <theme href="/_themes/hw2012/participation.html" />
+    <replace content="#introduction #title"
+             theme="#introduction #title" />
+    <replace content="#introduction #body"
+             theme="#introduction p" />
+    <replace content="#introduction .navigation"
+             theme="#introduction .navigation" />
+    <replace content="#introduction img"
+             theme="#introduction img" />
+  </rule>
+
+  <rule class="main" suppress-standard="1">
+    <theme href="/_themes/hw2012/index.html" />
+    <replace content="children:#hw2012languages"
+             theme="children:#languages" />
+    <replace content="children:#portletNews ul"
+             theme="children:#news" />
+    <replace content="children:#portletEvents ul"
+             theme="children:#upcomingEvent" />
+  </rule>
+
+</ruleset>
