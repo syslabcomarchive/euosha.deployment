@@ -61,7 +61,7 @@ class Deliverance(Buildout):
     @step(9)
     def pull_deliverance_rules(self):
         if not os.path.exists('themes'):
-            shutil.mkdir('themes')
+            os.mkdir('themes')
             self.cmd('svn co https://svn.syslab.com/svn/OSHA/Campaign-maintenance/Prototype/ themes/hw2010')
             self.cmd('svn co https://svn.syslab.com/svn/OSHA/Campaign-prevention/Prototype/ themes/hw2012')
         with self.chdir('themes'):
