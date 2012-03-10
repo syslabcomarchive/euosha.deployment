@@ -1,0 +1,11 @@
+--- src/platform/X11/Makefile.am.orig   2012-02-16 14:00:44.000000000 +0100
++++ src/platform/X11/Makefile.am        2012-02-16 14:01:05.000000000 +0100
+@@ -1,7 +1,7 @@
+ if ENABLE_X11
+ lib_LTLIBRARIES = libaggplatformX11.la
+
+-libaggplatformX11_la_LDFLAGS = -version-info @AGG_LIB_VERSION@  -L@x_libraries@
++libaggplatformX11_la_LDFLAGS = -version-info @AGG_LIB_VERSION@
+ libaggplatformX11_la_SOURCES = agg_platform_support.cpp
+ libaggplatformX11_la_CXXFLAGS =  -I$(top_srcdir)/include -I@x_includes@
+ libaggplatformX11_la_LIBADD = -lX11

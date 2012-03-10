@@ -1,0 +1,29 @@
+EU OSHA Batou Setup for Plone 4 deployment
+
+* git clone git@github.com:syslabcom/euosha.deployment.git
+* virtualenv -p python2.7 euosha.deployment
+* cd euosha.deployment
+* source bin/activate
+* python bootstrap.py
+* bin/buildout
+
+
+ENVIRONMENTS
+============
+
+Create your local environment by creating a cfg file in environments. 
+You can copy dev-pilz.cfg and adjust the ports
+
+SECRET
+======
+
+For deployment, you need an encrypted config files containing the passwords
+(make sure you have aespipe installed)
+
+* run bin/secretedit components/secrets/yourenvconfig.aes
+* choose a 20+ char password
+* use the same structure as in the template file secrets-template.cfg
+* save and check in your file
+
+
+

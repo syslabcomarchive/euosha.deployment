@@ -1,0 +1,1 @@
+A static file for measuring server performance and availability.

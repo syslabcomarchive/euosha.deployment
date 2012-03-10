@@ -1,0 +1,8 @@
+[buildout]
+extends = profiles/${component.profile}.cfg
+eggs-directory = ${service.base}/eggs
+
+[settings]
+programs = ${'\n\t'.join(component.programs)}
+listen-address = ${component.address.listen}
+connect-address = ${component.address.connect}

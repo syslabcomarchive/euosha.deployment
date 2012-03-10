@@ -1,0 +1,17 @@
+--- configure.in.orig   2012-02-16 14:03:52.000000000 +0100
++++ configure.in        2012-02-16 14:04:25.000000000 +0100
+@@ -100,10 +100,10 @@
+ temp_CXXFLAGS="$CXXFLAGS"
+ sdl_enabled=""
+ SDL_VERSION=1.2.0
+-AM_PATH_SDL($SDL_VERSION,
+-    [sdl_enabled="yes"],
+-    AC_MSG_WARN([*** SDL version $SDL_VERSION not found! Omitting sdl layer.])
+-    )
++dnl AM_PATH_SDL($SDL_VERSION,
++dnl     [sdl_enabled="yes"],
++dnl     AC_MSG_WARN([*** SDL version $SDL_VERSION not found! Omitting sdl layer.])
++dnl     )
+ dnl ### Restore old values
+ CFLAGS=$temp_CFLAGS
+ CXXFLAGS=$temp_CXXFLAGS

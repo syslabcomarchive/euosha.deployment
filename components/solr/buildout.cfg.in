@@ -1,0 +1,7 @@
+[buildout]
+extends = profiles/${component.profile}.cfg
+eggs-directory = ${service.base}/eggs
+
+[instance]
+host = ${component.address.listen.host}
+port = ${component.address.listen.port}

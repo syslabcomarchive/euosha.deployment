@@ -1,0 +1,3 @@
+[buildout]
+extends = profiles/${component.profile}.cfg
+eggs-directory = ${service.base}/eggs

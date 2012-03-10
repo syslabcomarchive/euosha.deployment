@@ -1,0 +1,24 @@
+[buildout]
+extends = profiles/${component.profile}.cfg
+eggs-directory = ${service.base}/eggs
+
+[instance]
+http-address = ${component.instance_address.listen}
+zeo-address = ${component.zeo.address.connect}
+zope-conf-additional +=
+    <product-config osha.policy>
+        ldap.uri ${component.ldap.uri}
+        ldap.binddn ${component.ldap.binddn}
+        ldap.bindpw ${component.ldap.bindpw}
+        solr.host ${component.solr.address.connect.host}
+        solr.port ${component.solr.address.connect.port}
+        ploneinstance_name euosha
+    </product-config>
+
+[worker]
+http-address = ${component.worker_address.listen}
+
+[settings]
+solr-address = http://${component.solr.address.connect}/
+
+# vim: set sw=4 et:
