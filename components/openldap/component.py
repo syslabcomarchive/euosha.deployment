@@ -32,7 +32,7 @@ class OpenLDAP(Component):
 
     @step(1)
     def copy_config(self):
-        for fn in (,):
+        for fn in ():
             self.install(fn, '%s/%s' % (self.etcdir, fn))
 
     @step(2)
