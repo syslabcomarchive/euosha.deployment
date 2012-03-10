@@ -1,0 +1,11 @@
+# Convenience aliases for batou
+# `source` this file to activate them
+
+alias instance=$VIRTUAL_ENV/work/zope/bin/instance
+alias solr=$VIRTUAL_ENV/work/solr/bin/solr-instance
+alias supervisorctl=$VIRTUAL_ENV/work/supervisor/bin/supervisorctl
+alias zeo=$VIRTUAL_ENV/work/zeo/bin/zeo
+alias worker=$VIRTUAL_ENV/work/zope/bin/worker
+
+# cd $OM
+export OM=$VIRTUAL_ENV/work/zope/parts/omelette
