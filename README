@@ -25,5 +25,8 @@ For deployment, you need an encrypted config files containing the passwords
 * use the same structure as in the template file secrets-template.cfg
 * save and check in your file
 
+DEPENDENCIES
+============
 
+apt-get install pkg-config libpcre3-dev
 
